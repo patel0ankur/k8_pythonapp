@@ -3,12 +3,12 @@ kind: Service
 
 metadata:
   name: pythonapp
+  labels:
+    service: pythonapp
 
 spec:
-  template:
-    spec:
-      containers:
-        - image: ankurpatel/pythonapp:v1
-          env:
-            - name: APP
-              value: "Python App v1"
+  selector:
+    app: pythonapp
+  ports:
+  - port: 5000
+    targetPort: 5000

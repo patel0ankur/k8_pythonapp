@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pythonapp
+  name: pythonapp
+
+spec:
+
+# Number of Replica
+  replicas: 1
+
+# This must match the labels we set on the pod!
+  selector:
+    matchLabels:
+      app: pythonapp
+      tier: app
+
+# How do want to update the pods?
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+# This template field is a regular pod configuration
+  template:
+    metadata:
+      labels:
+        app: pythonapp
+        tier: app
+
+# Pod configuration
+    spec:
+      containers:
+        - name: pythonapp
+          image: ankurpatel/pythonapp:v4
+          env:
+            - name: TARGET
+              value: "Python Sample v1"
+
+          ports:
+            - name: pythonapp
+              containerPort: 5000
+          resources:
+            requests:
+              memory: 1Gi
+
+      restartPolicy: Always
