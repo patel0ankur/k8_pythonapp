@@ -8,7 +8,7 @@ metadata:
 spec:
 
 # Number of Replica
-  replicas: 1
+  replicas: 2
 
 # This must match the labels we set on the pod!
   selector:
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: pythonapp
-          image: ankurpatel/pythonapp:v1
+          image: ankurpatel/pythonapp:v2
           env:
             - name: TARGET
               value: "Python Sample v1"

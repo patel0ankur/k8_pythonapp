@@ -7,8 +7,11 @@ metadata:
     service: pythonapp
 
 spec:
+  type: NodePort                   # Opens specific port on VMs
   selector:
-    app: pythonapp
+    app: pythonapp                 # Select pods with the label 'app' set to 'pythonapp'
+
   ports:
-  - port: 5000
-    targetPort: 5000
+  - port: 5000                     # port exposed internally in the cluster
+    targetPort: 5000               # the container port to send requests to
+    nodePort: 30036                # a static port assigned on each the node/VMs
