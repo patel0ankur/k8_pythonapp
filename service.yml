@@ -7,7 +7,6 @@ metadata:
     service: pythonapp
 
 spec:
-  type: LoadBalancer
   selector:
     app: pythonapp
   ports:
