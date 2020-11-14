@@ -8,7 +8,7 @@ metadata:
 spec:
 
 # Number of Replica
-  replicas: 2
+  replicas: 1
 
 # This must match the labels we set on the pod!
   selector:
