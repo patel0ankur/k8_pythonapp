@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: pythonapp
-          image: ankurpatel/pythonapp:v2
+          image: ankurpatel/pythonapp:v$(Build.BuildId)
           env:
             - name: TARGET
               value: "Python Sample v1"
